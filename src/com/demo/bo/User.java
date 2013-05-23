@@ -9,7 +9,7 @@ import com.demo.util.json.JSONObject.JSONObjectable;
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
-public class User extends AbstractUser implements java.io.Serializable, JSONObjectable {
+public class User extends AbstractUser implements JSONObjectable {
 
   // Constructors
 
@@ -39,7 +39,7 @@ public class User extends AbstractUser implements java.io.Serializable, JSONObje
     o.put("nickname", this.getNickname());
     o.put("level", this.getLevel());
     o.put("sex", this.getSex());
-    o.put("is_login", this.getIs_login());
+    o.put("is_login", this.getIsLogin());
     o.put("created_date", this.getCreated_date());
 
     return o;
@@ -56,7 +56,7 @@ public class User extends AbstractUser implements java.io.Serializable, JSONObje
       user.setPassword(o.getString("password"));
       user.setLevel((short) o.getInt("level"));
       user.setSex(o.getString("sex"));
-      user.setIs_login((short) o.getInt("is_login"));
+      user.setIsLogin((short) o.getInt("is_login"));
       user.setNickname(o.getString("nickname"));
       user.setCreated_date((Date) o.get("created_date"));
 

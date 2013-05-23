@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.Date;
+
 import junit.framework.TestCase;
 
 import org.junit.Test;
@@ -11,7 +13,7 @@ import com.demo.dao.UserDAO;
 
 public class UserDaoTestCase extends TestCase {
 
-  public static final String _userDAOName = "UserDao";
+  public static final String _userDAOName = "UserDAO";
 
   @Test
   public void testCreateUser() {
@@ -25,9 +27,10 @@ public class UserDaoTestCase extends TestCase {
       User user = new User();
       user.setName("test1");
       user.setLevel(1);
-      user.setSex("female");
+      user.setSex("male");
       user.setNickname("fuckYou");
       user.setPassword("123456");
+      user.setCreated_date(new Date());
 
       userDao.save(user);
 
