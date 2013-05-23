@@ -1,7 +1,6 @@
 package com.demo.bo;
 
-import java.sql.Timestamp;
-import java.util.Set;
+import java.util.Date;
 
 import com.demo.util.json.JSONException;
 import com.demo.util.json.JSONObject;
@@ -19,29 +18,30 @@ public class User extends AbstractUser implements java.io.Serializable, JSONObje
   }
 
   /** minimal constructor */
-  public User(Long id, String login, String pwd, Integer phoneVerify, Integer userType,
-      Double balance, Integer level, Integer credit, Integer createMode, Integer status) {
-    super(id, login, pwd, phoneVerify, userType, balance, level, credit, createMode, status);
+  public User(int id, String name, String password, String sex, String nickname) {
+
+    super(id, name, password, sex, nickname);
+
   }
 
   /** full constructor */
-  public User(Long id, Long area, String login, String pwd, String pwdquestion, String pwdanswer,
-      String phoneNumber, Integer phoneVerify, String verifyCode, String email, String realName,
-      String sex, String description, Integer userType, Double balance, Integer level,
-      Integer credit, Timestamp createDate, Integer createMode, Timestamp loginTime,
-      String loginIp, Integer status, Set payonlinelogs) {
-    super(id, area, login, pwd, pwdquestion, pwdanswer, phoneNumber, phoneVerify, verifyCode,
-        email, realName, sex, description, userType, balance, level, credit, createDate,
-        createMode, loginTime, loginIp, status, payonlinelogs);
+  public User(int id, String name, String password, String sex, short level, short is_login,
+      String nickname, Date created_date) {
+
+    super(id, name, password, sex, level, is_login, nickname, created_date);
   }
 
   public Object toJSONObject() throws JSONException {
     JSONObject o = new JSONObject();
 
-    /**
-     * 
-     * Put properties
-     */
+    o.put("id", this.getId());
+    o.put("name", this.getName());
+    o.put("nickname", this.getNickname());
+    o.put("level", this.getLevel());
+    o.put("sex", this.getSex());
+    o.put("is_login", this.getIs_login());
+    o.put("created_date", this.getCreated_date());
+
     return o;
   }
 
@@ -49,9 +49,22 @@ public class User extends AbstractUser implements java.io.Serializable, JSONObje
 
     User user = new User();
 
-    /**
-     * set properties
-     */
+    try {
+
+      user.setId(o.getInt("id"));
+      user.setName(o.getString("name"));
+      user.setPassword(o.getString("password"));
+      user.setLevel((short) o.getInt("level"));
+      user.setSex(o.getString("sex"));
+      user.setIs_login((short) o.getInt("is_login"));
+      user.setNickname(o.getString("nickname"));
+      user.setCreated_date((Date) o.get("created_date"));
+
+    } catch (JSONException e) {
+
+      e.printStackTrace();
+    }
+
     return user;
 
   }

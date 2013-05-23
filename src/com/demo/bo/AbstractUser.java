@@ -1,36 +1,19 @@
 package com.demo.bo;
 
-import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
 
 public abstract class AbstractUser implements java.io.Serializable {
 
   // Fields
 
-  private Long id;
-  private Long area;
-  private String login;
-  private String pwd;
-  private String pwdquestion;
-  private String pwdanswer;
-  private String phoneNumber;
-  private Integer phoneVerify;
-  private String verifyCode;
-  private String email;
-  private String realName;
+  private int id;
+  private String name;
+  private String password;
   private String sex;
-  private String description;
-  private Integer userType;
-  private Double balance;
-  private Integer level;
-  private Integer credit;
-  private Timestamp createDate;
-  private Integer createMode;
-  private Timestamp loginTime;
-  private String loginIp;
-  private Integer status;
-  private Set payonlinelogs = new HashSet(0);
+  private int level;
+  private int is_login;
+  private String nickname;
+  private Date created_date;
 
   // Constructors
 
@@ -39,235 +22,92 @@ public abstract class AbstractUser implements java.io.Serializable {
   }
 
   /** minimal constructor */
-  public AbstractUser(Long id, String login, String pwd, Integer phoneVerify, Integer userType,
-      Double balance, Integer level, Integer credit, Integer createMode, Integer status) {
+  public AbstractUser(int id, String name, String password, String sex, String nickname) {
     this.id = id;
-    this.login = login;
-    this.pwd = pwd;
-    this.phoneVerify = phoneVerify;
-    this.userType = userType;
-    this.balance = balance;
-    this.level = level;
-    this.credit = credit;
-    this.createMode = createMode;
-    this.status = status;
+    this.name = name;
+    this.password = password;
+    this.sex = sex;
+
   }
 
   /** full constructor */
-  public AbstractUser(Long id, Long area, String login, String pwd, String pwdquestion,
-      String pwdanswer, String phoneNumber, Integer phoneVerify, String verifyCode, String email,
-      String realName, String sex, String description, Integer userType, Double balance,
-      Integer level, Integer credit, Timestamp createDate, Integer createMode, Timestamp loginTime,
-      String loginIp, Integer status, Set payonlinelogs) {
+  public AbstractUser(int id, String name, String password, String sex, short level,
+      short is_login, String nickname, Date created_date) {
     this.id = id;
-    this.area = area;
-    this.login = login;
-    this.pwd = pwd;
-    this.pwdquestion = pwdquestion;
-    this.pwdanswer = pwdanswer;
-    this.phoneNumber = phoneNumber;
-    this.phoneVerify = phoneVerify;
-    this.verifyCode = verifyCode;
-    this.email = email;
-    this.realName = realName;
+    this.name = name;
+    this.password = password;
     this.sex = sex;
-    this.description = description;
-    this.userType = userType;
-    this.balance = balance;
     this.level = level;
-    this.credit = credit;
-    this.createDate = createDate;
-    this.createMode = createMode;
-    this.loginTime = loginTime;
-    this.loginIp = loginIp;
-    this.status = status;
-    this.payonlinelogs = payonlinelogs;
+    this.is_login = is_login;
+    this.nickname = nickname;
+    this.created_date = created_date;
+
   }
 
   // Property accessors
 
-  public Long getId() {
-    return this.id;
+  public int getId() {
+    return id;
   }
 
-  public void setId(Long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
-  public Long getArea() {
-    return this.area;
+  public String getName() {
+    return name;
   }
 
-  public void setArea(Long area) {
-    this.area = area;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public String getLogin() {
-    return this.login;
+  public String getPassword() {
+    return password;
   }
 
-  public void setLogin(String login) {
-    this.login = login;
-  }
-
-  public String getPwd() {
-    return this.pwd;
-  }
-
-  public void setPwd(String pwd) {
-    this.pwd = pwd;
-  }
-
-  public String getPwdquestion() {
-    return this.pwdquestion;
-  }
-
-  public void setPwdquestion(String pwdquestion) {
-    this.pwdquestion = pwdquestion;
-  }
-
-  public String getPwdanswer() {
-    return this.pwdanswer;
-  }
-
-  public void setPwdanswer(String pwdanswer) {
-    this.pwdanswer = pwdanswer;
-  }
-
-  public String getPhoneNumber() {
-    return this.phoneNumber;
-  }
-
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
-  }
-
-  public Integer getPhoneVerify() {
-    return this.phoneVerify;
-  }
-
-  public void setPhoneVerify(Integer phoneVerify) {
-    this.phoneVerify = phoneVerify;
-  }
-
-  public String getVerifyCode() {
-    return this.verifyCode;
-  }
-
-  public void setVerifyCode(String verifyCode) {
-    this.verifyCode = verifyCode;
-  }
-
-  public String getEmail() {
-    return this.email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getRealName() {
-    return this.realName;
-  }
-
-  public void setRealName(String realName) {
-    this.realName = realName;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   public String getSex() {
-    return this.sex;
+    return sex;
   }
 
   public void setSex(String sex) {
     this.sex = sex;
   }
 
-  public String getDescription() {
-    return this.description;
+  public int getLevel() {
+    return level;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public Integer getUserType() {
-    return this.userType;
-  }
-
-  public void setUserType(Integer userType) {
-    this.userType = userType;
-  }
-
-  public Double getBalance() {
-    return this.balance;
-  }
-
-  public void setBalance(Double balance) {
-    this.balance = balance;
-  }
-
-  public Integer getLevel() {
-    return this.level;
-  }
-
-  public void setLevel(Integer level) {
+  public void setLevel(int level) {
     this.level = level;
   }
 
-  public Integer getCredit() {
-    return this.credit;
+  public int getIs_login() {
+    return is_login;
   }
 
-  public void setCredit(Integer credit) {
-    this.credit = credit;
+  public void setIs_login(short isLogin) {
+    is_login = isLogin;
   }
 
-  public Timestamp getCreateDate() {
-    return this.createDate;
+  public String getNickname() {
+    return nickname;
   }
 
-  public void setCreateDate(Timestamp createDate) {
-    this.createDate = createDate;
+  public void setNickname(String nickname) {
+    this.nickname = nickname;
   }
 
-  public Integer getCreateMode() {
-    return this.createMode;
+  public Date getCreated_date() {
+    return created_date;
   }
 
-  public void setCreateMode(Integer createMode) {
-    this.createMode = createMode;
-  }
-
-  public Timestamp getLoginTime() {
-    return this.loginTime;
-  }
-
-  public void setLoginTime(Timestamp loginTime) {
-    this.loginTime = loginTime;
-  }
-
-  public String getLoginIp() {
-    return this.loginIp;
-  }
-
-  public void setLoginIp(String loginIp) {
-    this.loginIp = loginIp;
-  }
-
-  public Integer getStatus() {
-    return this.status;
-  }
-
-  public void setStatus(Integer status) {
-    this.status = status;
-  }
-
-  public Set getPayonlinelogs() {
-    return this.payonlinelogs;
-  }
-
-  public void setPayonlinelogs(Set payonlinelogs) {
-    this.payonlinelogs = payonlinelogs;
+  public void setCreated_date(Date createdDate) {
+    created_date = createdDate;
   }
 
 }
