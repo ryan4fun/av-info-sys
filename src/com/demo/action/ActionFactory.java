@@ -29,7 +29,7 @@ public class ActionFactory {
   public static Action createAction(String actionName, ServletContext ctx) throws DemoException {
 
     String className = packagePrefix + actionName;
-    if (actionName.startsWith("com.iact.action")) {
+    if (actionName.startsWith("com.demo.action")) {
       className = actionName;
     }
     Class o = null;
