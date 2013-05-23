@@ -6,12 +6,16 @@ public abstract class AbstractUser implements java.io.Serializable {
 
   // Fields
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 13344455222222L;
   private int id;
   private String name;
   private String password;
   private String sex;
   private int level;
-  private int is_login;
+  private int isLogin;
   private String nickname;
   private Date created_date;
 
@@ -31,14 +35,14 @@ public abstract class AbstractUser implements java.io.Serializable {
   }
 
   /** full constructor */
-  public AbstractUser(int id, String name, String password, String sex, short level,
-      short is_login, String nickname, Date created_date) {
+  public AbstractUser(int id, String name, String password, String sex, int level, int is_login,
+      String nickname, Date created_date) {
     this.id = id;
     this.name = name;
     this.password = password;
     this.sex = sex;
     this.level = level;
-    this.is_login = is_login;
+    this.isLogin = is_login;
     this.nickname = nickname;
     this.created_date = created_date;
 
@@ -86,12 +90,12 @@ public abstract class AbstractUser implements java.io.Serializable {
     this.level = level;
   }
 
-  public int getIs_login() {
-    return is_login;
+  public int getIsLogin() {
+    return isLogin;
   }
 
-  public void setIs_login(short isLogin) {
-    is_login = isLogin;
+  public void setIsLogin(int isLogin) {
+    this.isLogin = isLogin;
   }
 
   public String getNickname() {
