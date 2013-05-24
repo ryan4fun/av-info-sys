@@ -25,22 +25,21 @@ public class User extends AbstractUser implements JSONObjectable {
   }
 
   /** full constructor */
-  public User(int id, String name, String password, String sex, short level, short is_login,
-      String nickname, Date created_date) {
+  public User(int id, String name, String password, String email, short role, 
+      String nickname, Date Register_date) {
 
-    super(id, name, password, sex, level, is_login, nickname, created_date);
+    super(id, name, password, email, role,  nickname, Register_date);
   }
 
   public Object toJSONObject() throws JSONException {
     JSONObject o = new JSONObject();
 
     o.put("id", this.getId());
-    o.put("name", this.getName());
+    o.put("username", this.getUsername());
     o.put("nickname", this.getNickname());
-    o.put("level", this.getLevel());
-    o.put("sex", this.getSex());
-    o.put("is_login", this.getIsLogin());
-    o.put("created_date", this.getCreated_date());
+    o.put("role", this.getRole());
+    o.put("email", this.getEmail());
+    o.put("register_date", this.getRegister_date());
 
     return o;
   }
@@ -52,13 +51,12 @@ public class User extends AbstractUser implements JSONObjectable {
     try {
 
       user.setId(o.getInt("id"));
-      user.setName(o.getString("name"));
+      user.setUsername(o.getString("username"));
       user.setPassword(o.getString("password"));
-      user.setLevel((short) o.getInt("level"));
-      user.setSex(o.getString("sex"));
-      user.setIsLogin((short) o.getInt("is_login"));
+      user.setRole((short) o.getInt("role"));
+      user.setEmail(o.getString("email"));
       user.setNickname(o.getString("nickname"));
-      user.setCreated_date((Date) o.get("created_date"));
+      user.setRegister_date((Date) o.get("register_date"));
 
     } catch (JSONException e) {
 

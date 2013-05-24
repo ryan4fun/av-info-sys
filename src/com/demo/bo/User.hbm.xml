@@ -8,27 +8,23 @@
             <column name="id" />
             <generator class="identity"></generator>
         </id>
-        <property name="name" type="java.lang.String">
-            <column name="name" />
+        <property name="username" type="java.lang.String">
+            <column name="username" />
         </property>
         <property name="password" type="java.lang.String">
             <column name="password" not-null="true" />
         </property>
-        <property name="sex" type="java.lang.String">
-            <column name="sex" length="5"  />
+        <property name="email" type="java.lang.String">
+            <column name="email" length="5"  />
         </property>
-        <property name="level" type="java.lang.Integer">
-            <column name="level"  />
-        </property>
-        <property name="isLogin" type="java.lang.Integer">
-            <column name="is_loggin"  />
+        <property name="role" type="java.lang.Integer">
+            <column name="role"  />
         </property>
         <property name="nickname" type="java.lang.String">
             <column name="nickname" />
         </property>
-        <property name="created_date" type="java.sql.Timestamp">
-            <column name="created_date"  />
+        <property name="register_date" type="java.sql.Timestamp">
+            <column name="register_date"  />
         </property>
-     
     </class>
 </hibernate-mapping>

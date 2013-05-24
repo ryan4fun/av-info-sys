@@ -13,11 +13,11 @@ import com.demo.bo.User;
 public class UserDAO extends BaseHibernateDAO {
   private static final Log log = LogFactory.getLog(UserDAO.class);
   // property constants
-  public static final String NAME = "name";
+  public static final String USERNAME = "username";
   public static final String NICKNAME = "nickname";
-  public static final String SEX = "sex";
-  public static final String LEVEL = "level";
-  public static final String CREATED_DATE = "created_date";
+  public static final String EMAIL = "email";
+  public static final String ROLE = "role";
+  public static final String REGISTER_DATE = "register_date";
 
   public void save(User transientInstance) {
     log.debug("saving User instance");
@@ -79,19 +79,19 @@ public class UserDAO extends BaseHibernateDAO {
   }
 
   public List findByName(String name) {
-    return findByProperty(NAME, name);
+    return findByProperty(USERNAME, name);
   }
 
   public List findByNickname(String nickname) {
     return findByProperty(NICKNAME, nickname);
   }
 
-  public List findBySex(String sex) {
-    return findByProperty(SEX, sex);
+  public List findBySex(String email) {
+    return findByProperty(EMAIL, email);
   }
 
-  public List findByLevel(int level) {
-    return findByProperty(LEVEL, level);
+  public List findByLevel(int role) {
+    return findByProperty(ROLE, role);
   }
 
   public List findAll() {
