@@ -11,13 +11,12 @@ public abstract class AbstractUser implements java.io.Serializable {
    */
   private static final long serialVersionUID = 13344455222222L;
   private int id;
-  private String name;
+  private String username;
   private String password;
-  private String sex;
-  private int level;
-  private int isLogin;
+  private String email;
+  private int role;
   private String nickname;
-  private Date created_date;
+  private Date register_date;
 
   // Constructors
 
@@ -26,25 +25,24 @@ public abstract class AbstractUser implements java.io.Serializable {
   }
 
   /** minimal constructor */
-  public AbstractUser(int id, String name, String password, String sex, String nickname) {
+  public AbstractUser(int id, String username, String password, String email, String nickname) {
     this.id = id;
-    this.name = name;
+    this.username = username;
     this.password = password;
-    this.sex = sex;
+    this.email = email;
 
   }
 
   /** full constructor */
-  public AbstractUser(int id, String name, String password, String sex, int level, int is_login,
-      String nickname, Date created_date) {
+  public AbstractUser(int id, String username, String password, String email, int role, 
+      String nickname, Date register_date) {
     this.id = id;
-    this.name = name;
+    this.username = username;
     this.password = password;
-    this.sex = sex;
-    this.level = level;
-    this.isLogin = is_login;
+    this.email = email;
+    this.role = role;
     this.nickname = nickname;
-    this.created_date = created_date;
+    this.register_date = register_date;
 
   }
 
@@ -58,60 +56,53 @@ public abstract class AbstractUser implements java.io.Serializable {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
-  }
+public String getUsername() {
+	return username;
+}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+public void setUsername(String username) {
+	this.username = username;
+}
 
-  public String getPassword() {
-    return password;
-  }
+public String getPassword() {
+	return password;
+}
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+public void setPassword(String password) {
+	this.password = password;
+}
 
-  public String getSex() {
-    return sex;
-  }
+public String getEmail() {
+	return email;
+}
 
-  public void setSex(String sex) {
-    this.sex = sex;
-  }
+public void setEmail(String email) {
+	this.email = email;
+}
 
-  public int getLevel() {
-    return level;
-  }
+public int getRole() {
+	return role;
+}
 
-  public void setLevel(int level) {
-    this.level = level;
-  }
+public void setRole(int role) {
+	this.role = role;
+}
 
-  public int getIsLogin() {
-    return isLogin;
-  }
+public String getNickname() {
+	return nickname;
+}
 
-  public void setIsLogin(int isLogin) {
-    this.isLogin = isLogin;
-  }
+public void setNickname(String nickname) {
+	this.nickname = nickname;
+}
 
-  public String getNickname() {
-    return nickname;
-  }
+public Date getRegister_date() {
+	return register_date;
+}
 
-  public void setNickname(String nickname) {
-    this.nickname = nickname;
-  }
+public void setRegister_date(Date register_date) {
+	this.register_date = register_date;
+}
 
-  public Date getCreated_date() {
-    return created_date;
-  }
-
-  public void setCreated_date(Date createdDate) {
-    created_date = createdDate;
-  }
 
 }
