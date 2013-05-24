@@ -186,7 +186,6 @@ CREATE TABLE IF NOT EXISTS `user_activity` (
   `action` tinyint(4) NOT NULL COMMENT '动态类型：喜欢，收藏，评论，想看，看过',
   `target_type` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '活动对象的类型，如：电影、演员、制作公司',
   `target_id` int(11) DEFAULT NULL COMMENT '活动对象的ID',
-  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
   `comment` varchar(280) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
