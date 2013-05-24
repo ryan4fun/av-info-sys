@@ -2,13 +2,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>I love AV</title>
+<title>Welcom to the world of AV</title>
+<link rel="stylesheet" type="text/css" href="/css/toastr.min.css"/>
+
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/bootstrap-responsive.min.css" rel="stylesheet" />
+
+<link href="/css/fonts.css" rel="stylesheet" />
+<link href="/css/font-awesome.css" rel="stylesheet" />
+
+<script src="/jquery/jquery-1.8.3.js"></script>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <script>
 	function redirect() {
-		window.location.href="index.do?action=IndexAction"
+		//window.location.href="index.do?action=IndexAction"
 	}
 </script>
 <body onLoad="redirect();">
+
+	<a class="btn btn-danger" onclick="toastr.success('这是一个提示信息','成功');"><i class="icon-ok"></i>这是一个按钮</a>
+
+
+
+
+	<!-- footer -->
+	
+	<!-- js here for loading fast -->
+	<script src="/js/toastr.min.js"></script>
+	<script src="/js/bootstrap.js"></script>
 </body>
+
 </html>
