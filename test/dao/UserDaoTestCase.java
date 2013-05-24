@@ -29,9 +29,9 @@ public class UserDaoTestCase extends TestCase {
       assertNotNull(userDao);
 
       User user = new User();
-      user.setName("test1");
-      user.setLevel(1);
-      user.setSex("male");
+      user.setUsername("test1");
+      user.setRole(1);
+      user.setEmail("male@asdasd.asd");
       user.setNickname("fuckYou");
 //      user.setPassword("123456");
       
@@ -41,7 +41,7 @@ public class UserDaoTestCase extends TestCase {
       String password = new String(result,"utf-8");
       user.setPassword(password);
       
-      user.setCreated_date(new Date());
+      user.setRegister_date(new Date());
 
       userDao.save(user);
 
