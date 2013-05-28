@@ -44,7 +44,8 @@ public class RegisterAction extends AbstractAction {
 			userDao.save(user);
 			
 			getSessionContainer(req).setUser(user);
-			req.getRequestDispatcher("WEB-INF/jsp/index.jsp").forward(req, res);
+			this.reqParams.put("page", "index.jsp");
+			_forward(req, res);
 			return 0;
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
@@ -52,10 +53,6 @@ public class RegisterAction extends AbstractAction {
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			throw new DemoException(e);
-		} catch (ServletException e) {
-			throw new DemoException(e);
 		}
 		return 0;
 	}
