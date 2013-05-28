@@ -174,7 +174,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(20) COLLATE utf8_bin NOT NULL,
   `role` tinyint(4) NOT NULL,
   `nickname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `created_date` datetime NOT NULL,
   `email` varchar(100) CHARACTER SET latin1 NOT NULL,
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
