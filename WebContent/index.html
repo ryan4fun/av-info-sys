@@ -22,11 +22,127 @@
 		//window.location.href="index.do?action=IndexAction"
 	}
 </script>
+<style>
+.band-banner{
+	padding:40px 0 0 0;
+	margin:0px;
+	border-radius:0px;
+}
+.band-banner{
+	height:75px;
+}
+.logo{
+	background-image: url("/images/logo.png");
+	height:70px;
+	width:280px;
+}
+.content{
+	padding:20px 0 0 0;
+}
+
+</style>
 <body onLoad="redirect();">
+	<!-- fixed header -->
+    <div class="navbar navbar-fixed-top">
+	    <div class="navbar-inner">
+		    <div class="container" style="width:100%;">
+		    	<div class="nav-collapse">
+		          <ul class="nav">
+		            <li class="active"><a href="#">主页<i class="icon-star"></i></a></li>
+		            <li><a href="#">影片<i class="icon-facetime-video"></i></a></li>
+		            <li><a href="#">演员<i class="icon-camera"></i></a></li>
+		            <li><a href="#">片商<i class="icon-bar-chart"></i></a></li>
+		            <li class="dropdown">
+		              <a data-toggle="dropdown" class="dropdown-toggle" href="#">更多 <b class="caret"></b></a>
+		              <ul class="dropdown-menu">
+		                <li><a href="#">动作</a></li>
+		                <li><a href="#">另一个动作</a></li>
+		                <li><a href="#">其他动作</a></li>
+		                <li class="divider"></li>
+		                <li class="nav-header">导航头</li>
+		                <li><a href="#">被间隔的链接</a></li>
+		                <li><a href="#">另一个链接</a></li>
+		              </ul>
+		            </li>
+		          </ul>
+		          <ul class="nav pull-right">
+		            <li><a href="#">注册</a></li>
+		            <li class="divider-vertical"></li>
+		            <li class="dropdown">
+		              <a data-toggle="dropdown" class="dropdown-toggle" href="#">下拉 <b class="caret"></b></a>
+		              <ul class="dropdown-menu">
+						<li><a href="#">动作</a></li>
+		                <li><a href="#">另一个动作</a></li>
+		                <li><a href="#">其他动作</a></li>
+		                <li class="divider"></li>
+		                <li class="nav-header">导航头</li>
+		                <li><a href="#">被间隔的链接</a></li>
+		                <li><a href="#">另一个链接</a></li>
+		              </ul>
+		            </li>
+		          </ul>
+		        </div>
+		    </div>
+	    </div>
+    </div>
 
-	<a class="btn btn-danger" onclick="toastr.success('这是一个提示信息','成功');"><i class="icon-ok"></i>这是一个按钮</a>
 
+	<!-- banner header -->
+	<div class="band-banner alert alert-info">
+		<div class="container">
+			<div class="row">
+				<div class="span3">
+					<div class="logo"></div>
+				</div>
+				<div class="span4">
+					<div style="padding-top:23px;">
+						  <ul class="nav nav-pills">
+					        <li class="active"><a href="#">个人主页</a></li>
+					        <li><a href="#">演员动态</a></li>
+					        <li><a href="#">最新上映</a></li>
+					        <li><a href="#">永恒经典</a></li>
+					      </ul>					
+					</div>
 
+				</div>
+				<div class="span4">
+					<div style="padding-top:23px;">
+					  <div class="input-append">
+		                <input class="search-query" placeholder="输入搜索内容关键词..." type="text" size="16" id="appendedPrependedInput" style="margin-bottom:0px;"><button type="button" class="btn btn-warning"><i class="icon-search"></i>搜索</button>
+		              </div>
+		              	热门关键词：你懂的
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- body content -->
+	<div class="content">
+		<div class="container">
+		
+			<div class="row">
+				<div class="span6">
+					<div class="alert alert-warning">这里有</div>
+				</div>
+				<div class="span5">
+					<div class="alert alert-warning">
+						<h4>快让我进去！</h4>
+						<div class="row">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<h2>趁热赶快看了吧...</h2>
+			
+			
+		</div>
+	</div>
+	
+	
 
 
 	<!-- footer -->
