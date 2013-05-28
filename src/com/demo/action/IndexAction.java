@@ -14,10 +14,8 @@ public class IndexAction extends AbstractAction {
 		try{
 			req.getRequestDispatcher("WEB-INF/jsp/index.jsp").forward(req, res);
 		}catch(Exception e){
-			String aa="";
-			aa="ss";
+			throw new DemoException(e);
 		}
-		
 		return 0;
 	}
 
