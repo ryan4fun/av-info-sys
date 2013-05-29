@@ -42,7 +42,7 @@ public class RegisterAction extends AbstractAction {
 		// 验证用户名唯一性
 		UserDAO userDao = (UserDAO) DAOFactory.getDAO(_userDAOName);
 		List<User> users = userDao.findByName(username);
-		if(users != null){
+		if(users.size() != 0){
 			String errMsg = "用户名已被抢注了！";
 			res.setStatus(403);
 			getSessionContainer(req).setUser(null);
