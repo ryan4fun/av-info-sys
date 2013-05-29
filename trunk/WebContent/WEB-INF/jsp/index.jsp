@@ -40,7 +40,7 @@
 				authCode:$("#auth").val()
 			}).done(function(data){
 				console.log("data",data);
-				//window.location.href="/index.do?action=IndexAction";
+				window.location.href="/index.do?action=IndexAction";
 			}).fail(function(data){
 				$("#login_btn").button('reset');
 				toastr.warning(data.responseText,"再想想");
