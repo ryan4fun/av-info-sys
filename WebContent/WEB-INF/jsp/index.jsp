@@ -30,21 +30,6 @@
     <![endif]-->
 </head>
 <script>
-	function register(){
-		$.post("index.do?action=RegisterAction",{
-			username:$("#username").val(),
-			password:$("#password").val(),
-			nickname:$("#nickname").val(),
-			email:$("#email").val()
-		}).done(function(data){
-			toastr.success("恭喜您注册成！","提示信息");
-			$("#register").modal("hide");
-			setTimeout(window.location.href="/index.do?action=IndexAction",1000);
-		}).fail(function(data){
-			toastr.error(data.responseText,"sdfsdfsdf");
-		});
-	}
-	
 	//初始化
 	$(function(){
 		$("#login_btn").click(function(){
@@ -72,9 +57,10 @@
 			}).done(function(data){
 				toastr.success("恭喜您注册成！","提示信息");
 				$("#register").modal("hide");
+				document.getElementById('register_form').reset();
 				setTimeout(window.location.href="/index.do?action=IndexAction",2000);
 			}).fail(function(data){
-				$(this).button("reset");
+				$("#register_btn").button("reset");
 				toastr.error(data.responseText,"注册失败了");
 			});			
 		});
@@ -172,7 +158,7 @@
 	    </div>
 	    <div class="modal-body">
 	    	<p>
-	    		<form class="form-horizontal">
+	    		<form class="form-horizontal" id="register_form">
 	    			<fieldset>
 						<div class="control-group">
 							<label class="control-label">账户</label>
