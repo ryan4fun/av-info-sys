@@ -2,37 +2,37 @@
 -- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Ö÷»ú: localhost
--- Éú³ÉÈÕÆÚ: 2013 Äê 05 ÔÂ 22 ÈÕ 09:18
--- ·şÎñÆ÷°æ±¾: 5.5.27
--- PHP °æ±¾: 5.3.9-ZS5.6.0
+-- ä¸»æœº: localhost
+-- ç”Ÿæˆæ—¥æœŸ: 2013 å¹´ 05 æœˆ 22 æ—¥ 09:18
+-- æœåŠ¡å™¨ç‰ˆæœ¬: 5.5.27
+-- PHP ç‰ˆæœ¬: 5.3.9-ZS5.6.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Êı¾İ¿â: `avsys`
+-- æ•°æ®åº“: `avsys`
 --
 
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `actor`
+-- è¡¨çš„ç»“æ„ `actor`
 --
 USE `avsys`;
 DROP TABLE IF EXISTS `actor`;
 CREATE TABLE IF NOT EXISTS `actor` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ÑİÔ±ĞÅÏ¢±íÖ÷¼ü',
-  `agency_id` int(11) DEFAULT NULL COMMENT '¾­¼Í¹«Ë¾ID',
-  `cn_name` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'ÖĞÎÄÃû×Ö',
-  `jp_name` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'ÈÕÎÄÃû×Ö',
-  `en_name` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'Ó¢ÎÄÃû×Ö',
-  `nation` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '¹ú¼®',
-  `age` varchar(5) COLLATE utf8_bin DEFAULT NULL COMMENT 'ÄêÁä',
-  `introduce` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'ÑİÔ±ĞÅÏ¢¼ò½é',
-  `birth_place` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '³öÉúµØ',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'æ¼”å‘˜ä¿¡æ¯è¡¨ä¸»é”®',
+  `agency_id` int(11) DEFAULT NULL COMMENT 'ç»çºªå…¬å¸ID',
+  `cn_name` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'ä¸­æ–‡åå­—',
+  `jp_name` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'æ—¥æ–‡åå­—',
+  `en_name` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'è‹±æ–‡åå­—',
+  `nation` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'å›½ç±',
+  `age` varchar(5) COLLATE utf8_bin DEFAULT NULL COMMENT 'å¹´é¾„',
+  `introduce` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'æ¼”å‘˜ä¿¡æ¯ç®€ä»‹',
+  `birth_place` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'å‡ºç”Ÿåœ°',
   `cup` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'cup!',
-  `BWH` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'BWH£¡£¡',
+  `BWH` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'BWHï¼ï¼',
   `height` varchar(20) COLLATE utf8_bin DEFAULT NULL,
   `birthday` timestamp NULL DEFAULT NULL,
   `wiki` text COLLATE utf8_bin,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `actor` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `agency`
+-- è¡¨çš„ç»“æ„ `agency`
 --
 
 DROP TABLE IF EXISTS `agency`;
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `agency` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `comments`
+-- è¡¨çš„ç»“æ„ `comments`
 --
 
 DROP TABLE IF EXISTS `comments`;
@@ -68,14 +68,14 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL,
   `content` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `create_date` datetime NOT NULL,
-  `follow_comment_id` int(11) DEFAULT NULL COMMENT '¸úÌûµÄID',
+  `follow_comment_id` int(11) DEFAULT NULL COMMENT 'è·Ÿå¸–çš„ID',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `groups`
+-- è¡¨çš„ç»“æ„ `groups`
 --
 
 DROP TABLE IF EXISTS `groups`;
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `tags`
+-- è¡¨çš„ç»“æ„ `tags`
 --
 
 DROP TABLE IF EXISTS `tags`;
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `types`
+-- è¡¨çš„ç»“æ„ `types`
 --
 
 DROP TABLE IF EXISTS `types`;
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `types` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `users`
+-- è¡¨çš„ç»“æ„ `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -138,18 +138,18 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `video`
+-- è¡¨çš„ç»“æ„ `video`
 --
 
 DROP TABLE IF EXISTS `video`;
 CREATE TABLE IF NOT EXISTS `video` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) COLLATE utf8_bin NOT NULL,
-  `magnet_link` text COLLATE utf8_bin COMMENT '´ÅÁ¦ÏÂÔØÁ´½Ó',
-  `bit_torrent` text COLLATE utf8_bin NOT NULL COMMENT 'BTÖÖ×ÓÏÂÔØÁ´½Ó',
+  `magnet_link` text COLLATE utf8_bin COMMENT 'ç£åŠ›ä¸‹è½½é“¾æ¥',
+  `bit_torrent` text COLLATE utf8_bin NOT NULL COMMENT 'BTç§å­ä¸‹è½½é“¾æ¥',
   `thunder_link` text COLLATE utf8_bin,
   `ed2k_link` text COLLATE utf8_bin,
-  `wiki` text COLLATE utf8_bin NOT NULL COMMENT '¸÷ÖÖ½éÉÜ¡£',
+  `wiki` text COLLATE utf8_bin NOT NULL COMMENT 'å„ç§ä»‹ç»ã€‚',
   `mark_time` int(11) NOT NULL DEFAULT '0',
   `total_mark` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `video` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `video_actor`
+-- è¡¨çš„ç»“æ„ `video_actor`
 --
 
 DROP TABLE IF EXISTS `video_actor`;
