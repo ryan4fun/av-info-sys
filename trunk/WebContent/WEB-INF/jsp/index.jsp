@@ -223,7 +223,7 @@
 	<div class="band-banner alert alert-info">
 		<div class="container">
 			<div class="row">
-				<div class="span3">
+				<div class="span4">
 					<div class="logo"></div>
 				</div>
 				<div class="span4">
@@ -237,10 +237,10 @@
 					</div>
 
 				</div>
-				<div class="span4">
+				<div class="span3">
 					<div style="padding-top:23px;">
 					  <div class="input-append">
-		                <input class="search-query" placeholder="输入搜索内容关键词..." type="text" size="16" id="appendedPrependedInput" style="margin-bottom:0px;"><button type="button" class="btn btn-warning"><i class="icon-search"></i>搜索</button>
+		                <input class="search-query span2" placeholder="输入搜索内容关键词..." type="text" size="16" id="appendedPrependedInput" style="margin-bottom:0px;"><button style="width:80px;" type="button" class="btn btn-warning"><i class="icon-search"></i>搜索</button>
 		              </div>
 		              	热门关键词：你懂的
 					</div>
@@ -254,10 +254,10 @@
 	<div class="content">
 		<div class="container">
 		<%if(se==null || se.getUser()==null){ %>
-			<div class="row">
+			<div class="span11" style="margin-left:0px;">
 					<div class="alert alert-warning">
 						<a class="close" data-dismiss="alert">×</a>
-						<h4>快让我进去！</h4>
+						<h4>快放我进去！</h4>
 						<div class="row">
 							<div class="span4">
 								<form class="form-horizontal" style="margin: 0 0 0 0;">
@@ -284,14 +284,37 @@
 									</fieldset>
 								</form>							
 							</div>
-							<div class="span7">
+							<div class="span6">
 								这里放点宣传语或者图片勾引用户注册
 							</div>
 						</div>
 					</div>
 			</div>
 		<%}%>
-			<h3>趁热赶快看了吧...</h3>
+			<div class="span8" style="margin-left:0px;">
+				<div class="row">
+					<div class="span3"><h3>趁热赶快看了吧...</h3></div>
+					<%if(se!=null && se.getUser()!=null){ %>
+						<div class="span5"><a class="btn btn-info btn-large pull-right">我也来分享个片儿吧</a></div>
+					<%} %>
+				</div>
+				
+				<div class="alert" style="height:600px;margin-top:10px;">这里是占位置的，放最热的影片儿</div>
+				<div class="row">
+					<div class="span3"><h3>认识她们不...</h3></div>
+					<%if(se!=null && se.getUser()!=null){ %>
+						<div class="span5"><a class="btn btn-success btn-large pull-right">我还认识你不认识的</a></div>
+					<%} %>
+					
+				</div>
+				<div class="alert" style="height:600px;margin-top:10px;">这里是占位置的，放妹纸</div>
+			</div>
+			<div class="span3">
+				
+				<div class="alert" style="height:300px;margin-top:35px;">这里是占位置的，放最新的影片信息</div>
+				<div class="alert" style="height:300px;">这里是占位置的，放人气最旺的小组信息</div>
+			</div>
+			
 		</div>
 		
 			
