@@ -34,7 +34,7 @@ public class RegisterAction extends AbstractAction {
 			String errMsg = "验证码错误！";
 			res.setStatus(403);
 			getSessionContainer(req).setUser(null);
-			writeErrorMessage(ErrorCode.AUTH_FAILURE, errMsg, res);
+			writeErrorMessageString(errMsg, res);
 
 			return 0;
 		}
@@ -46,7 +46,7 @@ public class RegisterAction extends AbstractAction {
 			String errMsg = "用户名已被抢注了！";
 			res.setStatus(403);
 			getSessionContainer(req).setUser(null);
-			writeErrorMessage(ErrorCode.AUTH_FAILURE, errMsg, res);
+			writeErrorMessageString(errMsg, res);
 			return 0;
 		}
 		
