@@ -201,6 +201,26 @@ public abstract class AbstractAction implements Action {
       throw new DemoException(e);
     }
   }
+  
+  /**
+   * Write message to
+   * 
+   * @param errorCode
+   * @param msg
+   * @param resp
+   */
+  protected void writeErrorMessageString(String msg, HttpServletResponse resp)
+      throws DemoException {
+    try {
+      resp.setContentType("text/html;charset=gb2312");
+      PrintWriter pw = resp.getWriter();
+      pw.write(msg);
+      pw.flush();
+      pw.close(); 
+    } catch (IOException e) {
+      throw new DemoException(e);
+    }
+  }  
 
   /**
    * Write result to response.

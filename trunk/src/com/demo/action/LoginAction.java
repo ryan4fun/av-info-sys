@@ -38,9 +38,10 @@ public class LoginAction extends AbstractAction {
     if (!authCode.equalsIgnoreCase(pAuthCode)) {
 
       String errMsg = "验证码错误！";
+      res.setStatus(403);
       getSessionContainer(req).setUser(null);
-      writeErrorMessage(ErrorCode.AUTH_FAILURE, errMsg, res);
-
+      writeErrorMessageString(errMsg, res);
+     
       return 0;
     } else {
 
@@ -68,8 +69,9 @@ public class LoginAction extends AbstractAction {
     }
 
     String errMsg = "用户名或密码错误！";
+    res.setStatus(403);
     getSessionContainer(req).setUser(null);
-    writeErrorMessage(ErrorCode.AUTH_FAILURE, errMsg, res);
+    writeErrorMessageString(errMsg, res);
     return 0;
   }
 
