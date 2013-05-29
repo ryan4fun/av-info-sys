@@ -310,9 +310,14 @@
 				<div class="alert" style="height:600px;margin-top:10px;">这里是占位置的，放妹纸</div>
 			</div>
 			<div class="span3">
-				
-				<div class="alert" style="height:300px;margin-top:35px;">这里是占位置的，放最新的影片信息</div>
-				<div class="alert" style="height:300px;">这里是占位置的，放人气最旺的小组信息</div>
+				<div class="row">
+					<div class="span3"><h3>新片儿速递...</h3></div>
+				</div>				
+				<div class="alert" style="height:300px;margin-top:20px;">这里是占位置的，放最新的影片信息</div>
+				<div class="row">
+					<div class="span3"><h3>加入团伙...</h3></div>
+				</div>
+				<div class="alert" style="height:300px;margin-top:20px;">这里是占位置的，放人气最旺的小组信息</div>
 			</div>
 			
 		</div>
