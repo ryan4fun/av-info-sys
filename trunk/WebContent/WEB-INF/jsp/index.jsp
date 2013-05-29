@@ -1,10 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="com.demo.bo.User"%>
+<%@page import="com.demo.action.SessionContainer"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	SessionContainer se=(SessionContainer)session.getAttribute("sessionContainer");
+	User user;
+	String title="Hey boddy!不来一发么?";
+	if(se!=null && se.getUser()!=null){
+		user=se.getUser();
+		title="Let's do it! Dear "+user.getNickname();
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Welcom to the world of AV</title>
+<title><%=title %></title>
 <link rel="stylesheet" type="text/css" href="/css/toastr.min.css"/>
 
 <link href="/css/bootstrap.min.css" rel="stylesheet" />
@@ -20,21 +30,55 @@
     <![endif]-->
 </head>
 <script>
-	function redirect() {
-		//window.location.href="index.do?action=IndexAction"
-	}
 	function register(){
 		$.post("index.do?action=RegisterAction",{
 			username:$("#username").val(),
 			password:$("#password").val(),
+			nickname:$("#nickname").val(),
 			email:$("#email").val()
 		}).done(function(data){
 			toastr.success("恭喜您注册成！","提示信息");
 			$("#register").modal("hide");
+			setTimeout(window.location.href="/index.do?action=IndexAction",1000);
 		}).fail(function(data){
 			toastr.error(data.responseText,"sdfsdfsdf");
 		});
 	}
+	
+	//初始化
+	$(function(){
+		$("#login_btn").click(function(){
+			$("#login_btn").button('loading');
+			$.post("index.do?action=LoginAction",{
+				name:$("#account").val(),
+				password:$("#pass").val(),
+				authCode:$("#auth").val()
+			}).done(function(data){
+				console.log("data",data);
+				//window.location.href="/index.do?action=IndexAction";
+			}).fail(function(data){
+				$("#login_btn").button('reset');
+				toastr.warning(data.responseText,"再想想");
+			});			
+		});
+		$("#register_btn").click(function(){
+			$(this).button("loading");
+			$.post("index.do?action=RegisterAction",{
+				username:$("#username").val(),
+				password:$("#password").val(),
+				nickname:$("#nickname").val(),
+				email:$("#email").val(),
+				authCode:$("#reg_auth").val()
+			}).done(function(data){
+				toastr.success("恭喜您注册成！","提示信息");
+				$("#register").modal("hide");
+				setTimeout(window.location.href="/index.do?action=IndexAction",2000);
+			}).fail(function(data){
+				$(this).button("reset");
+				toastr.error(data.responseText,"注册失败了");
+			});			
+		});
+	});
 </script>
 <style>
 .band-banner{
@@ -84,10 +128,9 @@
 		            </li>
 		          </ul>
 		          <ul class="nav pull-right">
-		            <li><a data-toggle="modal" href="#register"  data-keyboard="true" data-backdrop="true">注册</a></li>		            
-		            <li class="divider-vertical"></li>
+				 <%if(se!=null && se.getUser()!=null){%>
 		            <li class="dropdown">
-		              <a data-toggle="dropdown" class="dropdown-toggle" href="#">下拉 <b class="caret"></b></a>
+		              <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%=se.getUser().getNickname() %><b class="caret"></b></a>
 		              <ul class="dropdown-menu">
 						<li><a href="#">动作</a></li>
 		                <li><a href="#">另一个动作</a></li>
@@ -98,6 +141,21 @@
 		                <li><a href="#">另一个链接</a></li>
 		              </ul>
 		            </li>
+
+
+		            <li class="divider-vertical"></li>
+		         <%}%>   
+		            
+		            <li>
+		            	<%if(se!=null && se.getUser()!=null){%>
+				    		<a href="#" onclick="logout()">注销</a>
+				    	<%}else{%>
+				    		<li><a data-toggle="modal" href="#register"  data-keyboard="true" data-backdrop="true">注册</a></li>
+				    	<%}%>
+		            </li>
+		            
+		            
+
 		          </ul>  
 		        </div>
 		    </div>
@@ -123,15 +181,21 @@
 							</div>
 						</div>
 						<div class="control-group">
+							<label class="control-label">昵称</label>
+							<div class="controls">
+								<input type="text" id="nickname">
+							</div>
+						</div>						
+						<div class="control-group">
 							<label class="control-label">密码</label>
 							<div class="controls">
-								<input type="text" id="password">
+								<input type="password" id="password">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label">重复密码</label>
 							<div class="controls">
-								<input type="text" id="password2">
+								<input type="password" id="password2">
 							</div>
 						</div>
 						<div class="control-group">
@@ -139,7 +203,13 @@
 							<div class="controls">
 								<input type="text" id="email">
 							</div>
-						</div>												    				
+						</div>
+						<div class="control-group">
+							<label class="control-label"><a href="#"  onclick="$('#reg_img').attr('src','/auth?'+Math.random())">给爷换一个验证码</a></label>
+							<div class="controls">
+								<input type="text" id="reg_auth" style="width:80px;"><img id="reg_img" alt="" src="/auth">
+							</div>
+						</div>										    				
 	    			</fieldset>
 	    		</form>
 	    	</p>
@@ -149,8 +219,7 @@
 	    	  <label class="checkbox pull-left" style="width:130px;">
                 <input type="checkbox" checked="true">本人已经阅读<a href="#">站点条款</a>
               </label>
-
-	    	<a class="btn btn-primary" onclick="register()">注册</a>
+			  <input id="register_btn" type="button" class="btn btn-primary" data-loading-text="数据验证中..." value="注册">
 	    </div>
     </div>
 
@@ -193,44 +262,44 @@
 	<!-- body content -->
 	<div class="content">
 		<div class="container">
-		
+		<%if(se==null || se.getUser()==null){ %>
 			<div class="row">
-				<div class="span6">
-					<div class="alert alert-warning">
-					<a class="close" data-dismiss="alert">×</a>
-					这里有</div>
-				</div>
-				<div class="span5">
 					<div class="alert alert-warning">
 						<a class="close" data-dismiss="alert">×</a>
 						<h4>快让我进去！</h4>
-						<form class="form-horizontal" style="margin: 0 0 0 0;">
-							<fieldset>
-								<div class="control-group">
-									<label class="control-label">账号</label>
-									<div class="controls">
-										<input type="text">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label">密码</label>
-									<div class="controls">
-										<input type="text">
-									</div>
-								</div>
-								<div style="text-align: center"><a class="btn btn-success" style="width:80px;">登录</a></div>
-																					
-							</fieldset>
-						</form>
-						
-
+						<div class="row">
+							<div class="span4">
+								<form class="form-horizontal" style="margin: 0 0 0 0;">
+									<fieldset>
+										<div class="control-group">
+											<div class="controls" style="margin-left:0px;">
+												<input type="text" placeholder="那你输入账号呗" id="account" value="">
+											</div>
+										</div>
+										<div class="control-group">
+											<div class="controls" style="margin-left:0px;">
+												<input type="password" placeholder="还有密码..." id="pass" value="">
+											</div>
+										</div>
+										<div class="control-group">
+											<div class="controls" style="margin-left:0px;">
+												<img alt="" style="cursor:pointer;" src="/auth">
+												<a href="#" onclick="$(this).prev().attr('src','/auth?'+Math.random())">给爷换一个</a>
+												<input style="width:75px;" type="text" placeholder="验证码哟亲" id="auth" value="">
+												
+											</div>
+										</div>
+										<input type="button" class="btn btn-success" data-loading-text="正在登录..." style="width:100px;margin-left:120px;" id="login_btn" value="登录">
+									</fieldset>
+								</form>							
+							</div>
+							<div class="span7">
+								zasdasd
+							</div>
+						</div>
 					</div>
-				</div>
-				
-				
-				
-				
 			</div>
+		<%}%>
 			<h3>趁热赶快看了吧...</h3>
 		</div>
 		
