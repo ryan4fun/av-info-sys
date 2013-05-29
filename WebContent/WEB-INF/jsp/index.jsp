@@ -64,6 +64,11 @@
 				toastr.error(data.responseText,"注册失败了");
 			});			
 		});
+		$("#logout").click(function(){
+			$.get("index.do?action=LogoutAction").done(function(){
+				window.location.href="/";
+			});
+		});
 	});
 </script>
 <style>
@@ -134,7 +139,7 @@
 		            
 		            <li>
 		            	<%if(se!=null && se.getUser()!=null){%>
-				    		<a href="#" onclick="logout()">注销</a>
+				    		<a href="#" id="logout">注销</a>
 				    	<%}else{%>
 				    		<li><a data-toggle="modal" href="#register"  data-keyboard="true" data-backdrop="true">注册</a></li>
 				    	<%}%>
@@ -280,7 +285,7 @@
 								</form>							
 							</div>
 							<div class="span7">
-								zasdasd
+								这里放点宣传语或者图片勾引用户注册
 							</div>
 						</div>
 					</div>
