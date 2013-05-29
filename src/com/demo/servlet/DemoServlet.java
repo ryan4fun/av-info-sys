@@ -87,7 +87,6 @@ public class DemoServlet extends HttpServlet {
     } catch (DemoException e) {
       log.error("Sorry exception occured : ", e);
       request.setAttribute("error", e);
-
       request.getRequestDispatcher("WEB-INF/jsp/error.jsp").forward(request, response);
     }
   }
