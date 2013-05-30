@@ -41,10 +41,10 @@ public class UserDAO extends BaseHibernateDAO {
     }
   }
 
-  public User findById(java.lang.Long id) {
+  public User findById(int id) {
     log.debug("getting User instance with id: " + id);
     try {
-      User instance = (User) getSession().get("com.iact.vo.User", id);
+      User instance = (User) getSession().get("com.demo.bo.User", id);
       return instance;
     } catch (RuntimeException re) {
       log.error("get failed", re);
@@ -55,7 +55,7 @@ public class UserDAO extends BaseHibernateDAO {
   public List findByExample(User instance) {
     log.debug("finding User instance by example");
     try {
-      List results = getSession().createCriteria("com.iact.vo.User").add(Example.create(instance))
+      List results = getSession().createCriteria("com.demo.bo.User").add(Example.create(instance))
           .list();
       log.debug("find by example successful, result size: " + results.size());
       return results;
